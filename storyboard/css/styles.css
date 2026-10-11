@@ -1,0 +1,70 @@
+/* Simple CSS for E-Aduan Kolej */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f2f5f9;
+    color: #222;
+}
+
+ a { text-decoration: none; color: #174a7e; }
+.shell { display: flex; min-height: 100vh; }
+.sidebar { width: 210px; background: #174a7e; color: white; padding: 20px; }
+.brand { font-size: 22px; font-weight: bold; margin-bottom: 8px; }
+.sub { font-size: 13px; color: #e3edf7; margin-bottom: 25px; }
+.nav a { display: block; color: white; padding: 10px; margin: 5px 0; border-radius: 4px; }
+.nav a:hover, .nav a.active { background: #2d6598; }
+.content { padding: 25px; flex: 1; min-width: 0; }
+.top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; gap: 12px; }
+h1 { font-size: 26px; margin: 0 0 5px; }
+h2 { font-size: 19px; }
+.muted { color: #666; }
+.user-pill { background: white; border: 1px solid #ccc; padding: 8px 12px; border-radius: 4px; }
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+.card, .panel { background: white; border: 1px solid #ddd; padding: 16px; margin-bottom: 16px; }
+.stat { border-top: 4px solid #174a7e; }
+.stat p { margin: 0 0 10px; color: #555; }
+.stat strong { font-size: 26px; }
+.section { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin: 22px 0 12px; }
+.section h2 { margin: 0; }
+.btn { display: inline-block; background: #174a7e; color: white; padding: 9px 13px; border-radius: 4px; border: 0; cursor: pointer; }
+.btn.light { background: #e4edf5; color: #174a7e; }
+.table-wrap { overflow-x: auto; }
+.table { width: 100%; border-collapse: collapse; background: white; }
+.table th, .table td { text-align: left; border: 1px solid #ddd; padding: 10px; }
+.table th { background: #e8eef5; }
+.status, .event { display: inline-block; padding: 5px 7px; border-radius: 3px; font-size: 12px; }
+.pending { background: #fff0c2; color: #795500; }
+.progress { background: #d9eaff; color: #174a7e; }
+.resolved { background: #d9f3df; color: #216b32; }
+.rejected { background: #ffe0e0; color: #9d2020; }
+.note { background: #e8f1fa; border: 1px solid #cbdced; padding: 12px; margin: 15px 0; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.calendar-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+.calendar { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); }
+.dayname, .day { background: white; border: 1px solid #ddd; padding: 8px; min-height: 75px; }
+.dayname { background: #e8eef5; min-height: auto; text-align: center; font-weight: bold; }
+.date { font-weight: bold; margin-bottom: 8px; }
+.event { display: block; margin: 4px 0; font-size: 11px; }
+.emptyday { background: #f5f5f5; }
+.legend { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px; }
+.legend span { font-size: 12px; }
+.dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 4px; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+.field input, .field select, .field textarea { padding: 9px; border: 1px solid #bbb; border-radius: 3px; font: inherit; }
+.field textarea { min-height: 90px; }
+.field label { font-weight: bold; }
+.full { grid-column: 1 / -1; }
+.footer { margin-top: 20px; color: #777; font-size: 12px; text-align: center; }
+@media (max-width: 800px) {
+    .shell { display: block; }
+    .sidebar { width: auto; }
+    .nav { display: flex; flex-wrap: wrap; gap: 4px; }
+    .nav a { padding: 8px; }
+    .content { padding: 15px; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .two, .form-grid { grid-template-columns: 1fr; }
+    .full { grid-column: auto; }
+    .calendar { min-width: 520px; }
+    .calendar-scroll { overflow-x: auto; }
+}
