@@ -1,0 +1,340 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Aduan Kolej | Student Dashboard</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f6f9;
+            color: #263445;
+        }
+        /* Sidebar */
+        .sidebar {
+            width: 240px;
+            height: 100vh;
+            background: #5900b3;
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 25px 15px;
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            font-size: 12px;
+            color: #cbd8e8;
+            margin-bottom: 35px;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 14px;
+            margin-bottom: 8px;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .sidebar a:hover,
+        .sidebar a.active {
+            background: #5900b3;
+        }
+
+        /* Main content */
+        .main {
+            margin-left: 240px;
+            padding: 30px;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .topbar h1 {
+            font-size: 26px;
+            margin-bottom: 8px;
+        }
+
+        .topbar p {
+            color: #718096;
+            font-size: 14px;
+        }
+
+        .profile {
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        /* Summary cards */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 22px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px #0000000d;
+            border-left: 5px solid #31577e;
+        }
+
+        .card p {
+            color: #718096;
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+        .card h2 {
+            font-size: 30px;
+        }
+
+        .pending {
+            border-color: #e0a12b;
+        }
+
+        .progress {
+            border-color: #3182ce;
+        }
+
+        .resolved {
+            border-color: #38a169;
+        }
+
+        /* Action button */
+        .actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 18px;
+            border: none;
+            border-radius: 6px;
+            background: #17365d;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #31577e;
+        }
+
+        /* Complaint table */
+        .table-box {
+            background: white;
+            padding: 22px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px #0000000d;
+            overflow-x: auto;
+        }
+
+        .table-box h2 {
+            font-size: 19px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 650px;
+        }
+
+        th, td {
+            padding: 15px 12px;
+            text-align: left;
+            border-bottom: 1px solid #edf0f4;
+            font-size: 13px;
+        }
+
+        th {
+            background: #f7f9fc;
+            color: #526174;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .status-pending {
+            background: #fff1cc;
+            color: #946200;
+        }
+
+        .status-progress {
+            background: #dbeafe;
+            color: #1d4ed8;
+        }
+
+        .status-resolved {
+            background: #d1fae5;
+            color: #047857;
+        }
+
+        .view-link {
+            color: #245b96;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .footer {
+            margin-top: 25px;
+            color: #718096;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        /* Responsive layout */
+        @media (max-width: 1000px) {
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 650px) {
+            .sidebar {
+                position: static;
+                width: 100%;
+                height: auto;
+            }
+
+            .subtitle {
+                margin-bottom: 15px;
+            }
+
+            .main {
+                margin-left: 0;
+                padding: 18px;
+            }
+
+            .topbar h1 {
+                font-size: 22px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .card {
+                padding: 15px;
+            }
+
+            .card h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="logo">E-Aduan Kolej</div>
+        <div class="subtitle">Colleges Maintenance & Repair</div>
+
+        <nav>
+            <a href="dashboard.html" class="active">Dashboard</a>
+            <a href="submit-complaint.html">Submit Complaint</a>
+            <a href="my-complaints.html">My Complaints</a>
+            <a href="notifications.html">Notifications</a>
+            <a href="profile.html">Profile</a>
+            <a href="login.html">Logout</a>
+        </nav>
+    </aside>
+
+    <!-- Main Dashboard -->
+    <main class="main">
+
+        <header class="topbar">
+            <div>
+                <h1>Student Dashboard</h1>
+                <p>Welcome back! Manage your colleges maintenance complaints.</p>
+            </div>
+            <div class="profile">ALIFF IKRAM BIN IBRAHIM </div>
+        </header>
+
+        <!-- Summary Cards -->
+        <section class="cards">
+
+            <div class="card">
+                <p>Total Complaints</p>
+            </div>
+
+            <div class="card pending">
+                <p>Pending</p>
+            </div>
+
+            <div class="card progress">
+                <p>In Progress</p>
+            </div>
+
+            <div class="card resolved">
+                <p>Resolved</p>
+            </div>
+
+        </section>
+
+        <!-- Quick Actions -->
+        <section class="actions">
+            <div>
+                <h2>Recent Complaints</h2>
+                <p style="color:#718096; margin-top:6px; font-size:14px;">
+                    View the latest updates on your reports.
+                </p>
+            </div>
+
+            <a href="submit-complaint.html" class="btn">
+                Submit New Complaint
+            </a>
+        </section>
+
+        <!-- Complaints Table -->
+        <section class="table-box">
+            <h2>Complaint List</h2>
+
+        </section>
+
+        <footer class="footer">
+            E-Aduan Kolej © 2026 | Colleges Maintenance & Repair System
+        </footer>
+
+    </main>
+
+</body>
+</html>
