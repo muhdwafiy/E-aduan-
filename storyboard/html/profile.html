@@ -1,1 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Aduan Kolej | Profile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
 
+        body {
+            background: #f4f6f9;
+            color: #263445;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 240px;
+            height: 100vh;
+            background: #5900b3;
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 25px 15px;
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            font-size: 12px;
+            color: #cbd8e8;
+            margin-bottom: 35px;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 14px;
+            margin-bottom: 8px;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .sidebar a:hover,
+        .sidebar a.active {
+            background: #440088;
+        }
+
+        /* Main Content Area */
+        .main {
+            margin-left: 240px;
+            padding: 30px;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .topbar h1 {
+            font-size: 26px;
+        }
+
+        /* Profile Card Layout */
+        .profile-container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 25px;
+            max-width: 950px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px #0000000d;
+        }
+
+        .avatar-section {
+            text-align: center;
+        }
+
+        .avatar {
+            width: 100px;
+            height: 100px;
+            background: #5900b3;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            font-weight: bold;
+            margin: 0 auto 15px;
+        }
+
+        .avatar-section h3 {
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+
+        .avatar-section p {
+            color: #718096;
+            font-size: 13px;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .field {
+            border-bottom: 1px solid #edf0f4;
+            padding-bottom: 12px;
+        }
+
+        .field label {
+            font-size: 11px;
+            color: #718096;
+            display: block;
+            margin-bottom: 4px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        .field p {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1a202c;
+        }
+
+        .footer {
+            margin-top: 35px;
+            color: #718096;
+            font-size: 12px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="logo">E-Aduan Kolej</div>
+        <div class="subtitle">Colleges Maintenance & Repair</div>
+
+        <nav>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="submit-complaint.html">Submit Complaint</a>
+            <a href="my-complaints.html">My Complaints</a>
+            <a href="notifications.html">Notifications</a>
+            <a href="profile.html" class="active">Profile</a>
+            <a href="index.html">Logout</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+
+        <header class="topbar">
+            <div>
+                <h1>Student Profile</h1>
+                <p style="color: #718096; font-size: 14px; margin-top: 4px;">View your registered student and room information.</p>
+            </div>
+            <div style="font-weight: bold;">ALIFF IKRAM BIN IBRAHIM</div>
+        </header>
+
+        <div class="profile-container">
+
+            <!-- Profile Summary Badge -->
+            <div class="card avatar-section">
+                <div class="avatar">AI</div>
+                <h3>ALIFF IKRAM</h3>
+                <p>2024891023</p>
+                <p style="margin-top: 10px; color: #38a169; font-weight: bold; font-size: 12px;">● Active Resident</p>
+            </div>
+
+            <!-- Profile Information Details -->
+            <div class="card">
+                <h2 style="font-size: 18px; margin-bottom: 20px;">Account Details</h2>
+
+                <div class="details-grid">
+                    <div class="field">
+                        <label>FULL NAME</label>
+                        <p>ALIFF IKRAM BIN IBRAHIM</p>
+                    </div>
+
+                    <div class="field">
+                        <label>STUDENT ID</label>
+                        <p>2024891023</p>
+                    </div>
+
+                    <div class="field">
+                        <label>STUDENT EMAIL</label>
+                        <p>aliffikram@student.uitm.edu.my</p>
+                    </div>
+
+                    <div class="field">
+                        <label>PHONE NUMBER</label>
+                        <p>+60 12-345 6789</p>
+                    </div>
+
+                    <div class="field">
+                        <label>COLLEGE NAME</label>
+                        <p>Kolej Delima</p>
+                    </div>
+
+                    <div class="field">
+                        <label>BLOCK & ROOM NUMBER</label>
+                        <p>Block A - Room 302</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <footer class="footer">
+            E-Aduan Kolej © 2026 | Colleges Maintenance & Repair System
+        </footer>
+
+    </main>
+
+</body>
+</html>
