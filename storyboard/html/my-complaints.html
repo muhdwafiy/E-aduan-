@@ -1,1 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Aduan Kolej | My Complaints</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { background: #f4f6f9; color: #263445; }
+        .sidebar { width: 240px; height: 100vh; background: #5900b3; color: white; position: fixed; top: 0; left: 0; padding: 25px 15px; }
+        .logo { font-size: 21px; font-weight: bold; margin-bottom: 8px; }
+        .subtitle { font-size: 12px; color: #cbd8e8; margin-bottom: 35px; }
+        .sidebar a { display: block; padding: 14px; margin-bottom: 8px; color: white; text-decoration: none; border-radius: 6px; font-size: 14px; }
+        .sidebar a:hover, .sidebar a.active { background: #440088; }
+        .main { margin-left: 240px; padding: 30px; }
+        .topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+        .topbar h1 { font-size: 26px; }
+        .table-box { background: white; padding: 22px; border-radius: 10px; box-shadow: 0 2px 8px #0000000d; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 15px 12px; text-align: left; border-bottom: 1px solid #edf0f4; font-size: 13px; }
+        th { background: #f7f9fc; color: #526174; }
+        .status { padding: 6px 10px; border-radius: 20px; font-size: 12px; font-weight: bold; display: inline-block; }
+        .status-pending { background: #fff1cc; color: #946200; }
+        .status-progress { background: #dbeafe; color: #1d4ed8; }
+        .status-resolved { background: #d1fae5; color: #047857; }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">E-Aduan Kolej</div>
+        <div class="subtitle">Colleges Maintenance & Repair</div>
+        <nav>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="submit-complaint.html">Submit Complaint</a>
+            <a href="my-complaints.html" class="active">My Complaints</a>
+            <a href="notifications.html">Notifications</a>
+            <a href="profile.html">Profile</a>
+            <a href="index.html">Logout</a>
+        </nav>
+    </aside>
 
+    <main class="main">
+        <header class="topbar">
+            <div>
+                <h1>My Complaints History</h1>
+                <p style="color: #718096; font-size: 14px; margin-top: 4px;">Track and view all complaints you have submitted.</p>
+            </div>
+            <div style="font-weight: bold;">ALIFF IKRAM BIN IBRAHIM</div>
+        </header>
+
+        <section class="table-box">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Complaint ID</th>
+                        <th>Category</th>
+                        <th>Location</th>
+                        <th>Date Submitted</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#AD-104</td>
+                        <td>Plumbing / Water Leak</td>
+                        <td>Block A, Room 302</td>
+                        <td>12 Oct 2026</td>
+                        <td><span class="status status-pending">Pending</span></td>
+                    </tr>
+                    <tr>
+                        <td>#AD-101</td>
+                        <td>Electrical / AC</td>
+                        <td>Block A, Room 302</td>
+                        <td>05 Oct 2026</td>
+                        <td><span class="status status-progress">In Progress</span></td>
+                    </tr>
+                    <tr>
+                        <td>#AD-088</td>
+                        <td>Wi-Fi / Internet</td>
+                        <td>Level 3 Study Area</td>
+                        <td>20 Sep 2026</td>
+                        <td><span class="status status-resolved">Resolved</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+</html>
