@@ -1,1 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Aduan Kolej | Notifications</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
 
+        body {
+            background: #f4f6f9;
+            color: #263445;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 240px;
+            height: 100vh;
+            background: #5900b3;
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 25px 15px;
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            font-size: 12px;
+            color: #cbd8e8;
+            margin-bottom: 35px;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 14px;
+            margin-bottom: 8px;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .sidebar a:hover,
+        .sidebar a.active {
+            background: #440088;
+        }
+
+        /* Main Content */
+        .main {
+            margin-left: 240px;
+            padding: 30px;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .topbar h1 {
+            font-size: 26px;
+        }
+
+        /* Notifications Container */
+        .notifications-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px #0000000d;
+            max-width: 900px;
+        }
+
+        .notification-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 16px;
+            border-bottom: 1px solid #edf0f4;
+            transition: background 0.2s;
+        }
+
+        .notification-item:last-child {
+            border-bottom: none;
+        }
+
+        .notification-item.unread {
+            background: #f8fafc;
+        }
+
+        .badge-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .icon-progress { background: #dbeafe; color: #1d4ed8; }
+        .icon-resolved { background: #d1fae5; color: #047857; }
+        .icon-info { background: #fef3c7; color: #d97706; }
+
+        .notification-content h4 {
+            font-size: 15px;
+            color: #1e293b;
+            margin-bottom: 4px;
+        }
+
+        .notification-content p {
+            font-size: 13px;
+            color: #64748b;
+            margin-bottom: 6px;
+            line-height: 1.4;
+        }
+
+        .notification-time {
+            font-size: 11px;
+            color: #94a3b8;
+            font-weight: 600;
+        }
+
+        .footer {
+            margin-top: 35px;
+            color: #718096;
+            font-size: 12px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="logo">E-Aduan Kolej</div>
+        <div class="subtitle">Colleges Maintenance & Repair</div>
+
+        <nav>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="submit-complaint.html">Submit Complaint</a>
+            <a href="my-complaints.html">My Complaints</a>
+            <a href="notifications.html" class="active">Notifications</a>
+            <a href="profile.html">Profile</a>
+            <a href="index.html">Logout</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+
+        <header class="topbar">
+            <div>
+                <h1>Notifications</h1>
+                <p style="color: #718096; font-size: 14px; margin-top: 4px;">Updates and status logs on your reported issues.</p>
+            </div>
+            <div style="font-weight: bold;">ALIFF IKRAM BIN IBRAHIM</div>
+        </header>
+
+        <div class="notifications-card">
+
+            <div class="notification-item unread">
+                <div class="badge-icon icon-progress">🔧</div>
+                <div class="notification-content">
+                    <h4>Technician Assigned (#AD-101)</h4>
+                    <p>A technician has been assigned to inspect the AC unit in Block A, Room 302.</p>
+                    <span class="notification-time">2 hours ago</span>
+                </div>
+            </div>
+
+            <div class="notification-item">
+                <div class="badge-icon icon-info">📋</div>
+                <div class="notification-content">
+                    <h4>Complaint Received (#AD-104)</h4>
+                    <p>Your plumbing leakage report (#AD-104) has been registered and is pending admin review.</p>
+                    <span class="notification-time">1 day ago</span>
+                </div>
+            </div>
+
+            <div class="notification-item">
+                <div class="badge-icon icon-resolved">✅</div>
+                <div class="notification-content">
+                    <h4>Complaint Resolved (#AD-088)</h4>
+                    <p>The Wi-Fi router issue in Level 3 Study Area has been marked as resolved.</p>
+                    <span class="notification-time">20 Sep 2026</span>
+                </div>
+            </div>
+
+        </div>
+
+        <footer class="footer">
+            E-Aduan Kolej © 2026 | Colleges Maintenance & Repair System
+        </footer>
+
+    </main>
+
+</body>
+</html>
