@@ -1,1 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Aduan Kolej | Submit Complaint</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
 
+        body {
+            background: #f4f6f9;
+            color: #263445;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 240px;
+            height: 100vh;
+            background: #5900b3;
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 25px 15px;
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            font-size: 12px;
+            color: #cbd8e8;
+            margin-bottom: 35px;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 14px;
+            margin-bottom: 8px;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .sidebar a:hover,
+        .sidebar a.active {
+            background: #440088;
+        }
+
+        /* Main Content Area */
+        .main {
+            margin-left: 240px;
+            padding: 30px;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .topbar h1 {
+            font-size: 26px;
+        }
+
+        /* Form Layout */
+        .form-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px #0000000d;
+            max-width: 750px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: bold;
+            color: #4a5568;
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e0;
+            border-radius: 6px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #5900b3;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .btn-submit {
+            background: #17365d;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btn-submit:hover {
+            background: #31577e;
+        }
+
+        .btn-cancel {
+            background: #edf2f7;
+            color: #4a5568;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .footer {
+            margin-top: 35px;
+            color: #718096;
+            font-size: 12px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="logo">E-Aduan Kolej</div>
+        <div class="subtitle">Colleges Maintenance & Repair</div>
+
+        <nav>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="submit-complaint.html" class="active">Submit Complaint</a>
+            <a href="my-complaints.html">My Complaints</a>
+            <a href="notifications.html">Notifications</a>
+            <a href="profile.html">Profile</a>
+            <a href="index.html">Logout</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+
+        <header class="topbar">
+            <div>
+                <h1>Submit New Complaint</h1>
+                <p style="color: #718096; font-size: 14px; margin-top: 4px;">File a maintenance or facility repair request.</p>
+            </div>
+            <div style="font-weight: bold;">ALIFF IKRAM BIN IBRAHIM</div>
+        </header>
+
+        <div class="form-card">
+            <form action="my-complaints.html">
+                <div class="form-group">
+                    <label>Complaint Title</label>
+                    <input type="text" placeholder="e.g. Broken Air Conditioner / Water Leakage" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Category</label>
+                    <select required>
+                        <option value="">Select Issue Category</option>
+                        <option value="electrical">Electrical / Fan / AC</option>
+                        <option value="plumbing">Plumbing / Water / Toilet</option>
+                        <option value="furniture">Furniture / Bed / Table</option>
+                        <option value="wifi">Wi-Fi / Internet</option>
+                        <option value="other">Other Maintenance</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Location / Room Number</label>
+                    <input type="text" placeholder="e.g. Block A, Room 302" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea placeholder="Describe the issue in detail..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Upload Photo (Optional)</label>
+                    <input type="file">
+                </div>
+
+                <div class="form-actions">
+                    <a href="dashboard.html" class="btn-cancel">Cancel</a>
+                    <button type="submit" class="btn-submit">Submit Report</button>
+                </div>
+            </form>
+        </div>
+
+        <footer class="footer">
+            E-Aduan Kolej © 2026 | Colleges Maintenance & Repair System
+        </footer>
+
+    </main>
+
+</body>
+</html>
