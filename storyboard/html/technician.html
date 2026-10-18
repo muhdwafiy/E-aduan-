@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Aduan Kolej | Technician</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { background: #f4f6f9; color: #263445; }
+
+        /* ===== SIDEBAR ===== */
+        .sidebar {
+            width: 240px;
+            height: 100vh;
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 25px 15px;
+            border-right: 1px solid rgba(255, 255, 255, 0.25);
+            background:
+                linear-gradient(180deg,
+                    rgba(214, 80, 160, 0.55) 0%,
+                    rgba(90, 100, 230, 0.45) 30%,
+                    rgba(5, 5, 8, 0) 65%),
+                #07070d;
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 35px;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 14px;
+            margin-bottom: 8px;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+            border: 1px solid transparent;
+            transition: 0.25s ease;
+        }
+
+        .sidebar a:hover {
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .sidebar a.active {
+            background: linear-gradient(90deg, rgba(214, 80, 160, 0.6), rgba(90, 100, 230, 0.6));
+            border-color: rgba(255, 255, 255, 0.3);
+            font-weight: 600;
+        }
+        /* ===== END SIDEBAR ===== */
+
+        .main { margin-left: 240px; padding: 30px; }
+        .topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+        .topbar h1 { font-size: 26px; }
+        .topbar p { color: #718096; font-size: 14px; margin-top: 4px; }
+
+        /* Summary cards */
+        .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 25px; }
+        .stat { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 8px #0000000d; border-top: 4px solid #8a3a8c; }
+        .stat p { color: #526174; font-size: 13px; margin-bottom: 8px; }
+        .stat strong { font-size: 30px; }
+
+        /* Table */
+        .table-box { background: white; padding: 22px; border-radius: 10px; box-shadow: 0 2px 8px #0000000d; overflow-x: auto; }
+        .table-box h2 { font-size: 18px; margin-bottom: 15px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 14px 12px; text-align: left; border-bottom: 1px solid #edf0f4; font-size: 13px; }
+        th { background: #f7f9fc; color: #526174; }
+
+        .status { padding: 6px 10px; border-radius: 20px; font-size: 12px; font-weight: bold; display: inline-block; }
+        .status-pending { background: #fff1cc; color: #946200; }
+        .status-progress { background: #dbeafe; color: #1d4ed8; }
+        .status-resolved { background: #d1fae5; color: #047857; }
+
+        select { padding: 7px; border: 1px solid #bbb; border-radius: 4px; font-size: 13px; }
+        .update-btn {
+            padding: 7px 12px;
+            border: 0;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+            color: white;
+            background: linear-gradient(90deg, #b8458f, #5a64e6);
+        }
+        .update-btn:hover { opacity: 0.9; }
+
+        @media (max-width: 800px) {
+            .main { margin-left: 0; }
+            .stats { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">E-Aduan Kolej</div>
+        <div class="subtitle">Technician Panel</div>
+        <nav>
+            <a href="technician.html" class="active">Assigned Complaints</a>
+            <a href="technician-history.html">Completed Jobs</a>
+            <a href="technician-profile.html">Profile</a>
+            <a href="index.html">Logout</a>
+        </nav>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <div>
+                <h1>Assigned Complaints</h1>
+                <p>View your jobs and update their progress.</p>
+            </div>
+            <div style="font-weight: bold;">TECHNICIAN AHMAD</div>
+        </header>
+
+        <section class="stats">
+            <div class="stat"><p>Total Assigned</p><strong id="statTotal">0</strong></div>
+            <div class="stat"><p>Pending</p><strong id="statPending">0</strong></div>
+            <div class="stat"><p>In Progress</p><strong id="statProgress">0</strong></div>
+            <div class="stat"><p>Resolved</p><strong id="statResolved">0</strong></div>
+        </section>
+
+        <section class="table-box">
+            <h2>My Jobs</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Complaint ID</th>
+                        <th>Category</th>
+                        <th>Location</th>
+                        <th>Reported By</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Update Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#AD-104</td>
+                        <td>Plumbing / Water Leak</td>
+                        <td>Block A, Room 302</td>
+                        <td>Aliff Ikram</td>
+                        <td>12 Oct 2026</td>
+                        <td><span class="status status-pending">Pending</span></td>
+                        <td>
+                            <select>
+                                <option value="pending" selected>Pending</option>
+                                <option value="progress">In Progress</option>
+                                <option value="resolved">Resolved</option>
+                            </select>
+                            <button class="update-btn">Update</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#AD-101</td>
+                        <td>Electrical / AC</td>
+                        <td>Block B, Room 114</td>
+                        <td>Nurul Aina</td>
+                        <td>05 Oct 2026</td>
+                        <td><span class="status status-progress">In Progress</span></td>
+                        <td>
+                            <select>
+                                <option value="pending">Pending</option>
+                                <option value="progress" selected>In Progress</option>
+                                <option value="resolved">Resolved</option>
+                            </select>
+                            <button class="update-btn">Update</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#AD-088</td>
+                        <td>Wi-Fi / Internet</td>
+                        <td>Level 3 Study Area</td>
+                        <td>Haziq Danial</td>
+                        <td>20 Sep 2026</td>
+                        <td><span class="status status-resolved">Resolved</span></td>
+                        <td>
+                            <select>
+                                <option value="pending">Pending</option>
+                                <option value="progress">In Progress</option>
+                                <option value="resolved" selected>Resolved</option>
+                            </select>
+                            <button class="update-btn">Update</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script>
+        const labels = { pending: "Pending", progress: "In Progress", resolved: "Resolved" };
+
+        function updateStats() {
+            document.getElementById("statTotal").textContent = document.querySelectorAll("tbody tr").length;
+            document.getElementById("statPending").textContent = document.querySelectorAll(".status-pending").length;
+            document.getElementById("statProgress").textContent = document.querySelectorAll(".status-progress").length;
+            document.getElementById("statResolved").textContent = document.querySelectorAll(".status-resolved").length;
+        }
+
+        document.querySelectorAll(".update-btn").forEach(function (btn) {
+            btn.addEventListener("click", function () {
+                const row = btn.closest("tr");
+                const value = row.querySelector("select").value;
+                const badge = row.querySelector(".status");
+                badge.className = "status status-" + value;
+                badge.textContent = labels[value];
+                updateStats();
+            });
+        });
+
+        updateStats();
+    </script>
+</body>
+</html>

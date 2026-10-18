@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Aduan Kolej | Technician Profile</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { background: #f4f6f9; color: #263445; }
+
+        /* ===== SIDEBAR ===== */
+        .sidebar {
+            width: 240px;
+            height: 100vh;
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 25px 15px;
+            border-right: 1px solid rgba(255, 255, 255, 0.25);
+            background:
+                linear-gradient(180deg,
+                    rgba(214, 80, 160, 0.55) 0%,
+                    rgba(90, 100, 230, 0.45) 30%,
+                    rgba(5, 5, 8, 0) 65%),
+                #07070d;
+        }
+        .logo { font-size: 21px; font-weight: bold; letter-spacing: 1px; margin-bottom: 8px; }
+        .subtitle { font-size: 12px; color: rgba(255, 255, 255, 0.8); margin-bottom: 35px; }
+        .sidebar a {
+            display: block;
+            padding: 14px;
+            margin-bottom: 8px;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+            border: 1px solid transparent;
+            transition: 0.25s ease;
+        }
+        .sidebar a:hover { background: rgba(255, 255, 255, 0.12); }
+        .sidebar a.active {
+            background: linear-gradient(90deg, rgba(214, 80, 160, 0.6), rgba(90, 100, 230, 0.6));
+            border-color: rgba(255, 255, 255, 0.3);
+            font-weight: 600;
+        }
+        /* ===== END SIDEBAR ===== */
+
+        .main { margin-left: 240px; padding: 30px; }
+        .topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+        .topbar h1 { font-size: 26px; }
+        .topbar p { color: #718096; font-size: 14px; margin-top: 4px; }
+        .box { background: white; padding: 22px; border-radius: 10px; box-shadow: 0 2px 8px #0000000d; }
+        @media (max-width: 800px) { .main { margin-left: 0; } }
+
+        .layout { display: grid; grid-template-columns: 280px 1fr; gap: 20px; }
+        .summary { text-align: center; }
+        .avatar {
+            width: 90px; height: 90px; border-radius: 50%; margin: 0 auto 14px;
+            display: grid; place-items: center;
+            font-size: 32px; font-weight: bold; color: white;
+            background: linear-gradient(135deg, #b8458f, #5a64e6);
+        }
+        .summary h2 { font-size: 20px; }
+        .summary p { color: #718096; font-size: 13px; margin-top: 4px; }
+        .badge { display: inline-block; margin-top: 12px; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; background: #d1fae5; color: #047857; }
+
+        .box h3 { font-size: 18px; margin-bottom: 18px; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .field { display: flex; flex-direction: column; gap: 6px; }
+        .field label { font-size: 13px; font-weight: bold; color: #526174; }
+        .field input { padding: 10px; border: 1px solid #bbb; border-radius: 4px; font-size: 14px; }
+        .field input[readonly] { background: #f1f3f6; color: #6b7785; }
+        .save-btn {
+            margin-top: 18px; padding: 11px 22px; border: 0; border-radius: 4px; cursor: pointer;
+            font-size: 14px; font-weight: bold; color: white;
+            background: linear-gradient(90deg, #b8458f, #5a64e6);
+        }
+        .save-btn:hover { opacity: 0.9; }
+        .msg { margin-top: 14px; font-size: 13px; color: #047857; display: none; }
+        @media (max-width: 800px) { .layout, .form-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">E-Aduan Kolej</div>
+        <div class="subtitle">Technician Panel</div>
+        <nav>
+            <a href="technician.html">Assigned Complaints</a>
+            <a href="technician-history.html">Completed Jobs</a>
+            <a href="technician-profile.html" class="active">Profile</a>
+            <a href="index.html">Logout</a>
+        </nav>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <div>
+                <h1>My Profile</h1>
+                <p>View and update your technician details.</p>
+            </div>
+            <div style="font-weight: bold;">TECHNICIAN AHMAD</div>
+        </header>
+
+        <div class="layout">
+            <section class="box summary">
+                <div class="avatar">AR</div>
+                <h2>Ahmad Bin Razak</h2>
+                <p>Maintenance Technician</p>
+                <span class="badge">Active</span>
+            </section>
+
+            <section class="box">
+                <h3>Personal Information</h3>
+                <form id="profileForm">
+                    <div class="form-grid">
+                        <div class="field">
+                            <label>Full Name</label>
+                            <input type="text" value="Ahmad Bin Razak" readonly>
+                        </div>
+                        <div class="field">
+                            <label>Staff ID</label>
+                            <input type="text" value="TECH-0012" readonly>
+                        </div>
+                        <div class="field">
+                            <label>Specialization</label>
+                            <input type="text" value="Electrical &amp; Plumbing" readonly>
+                        </div>
+                        <div class="field">
+                            <label>Assigned College</label>
+                            <input type="text" value="Kolej Kediaman Utama" readonly>
+                        </div>
+                        <div class="field">
+                            <label>Phone Number</label>
+                            <input type="text" id="phone" value="012-345 6789" required>
+                        </div>
+                        <div class="field">
+                            <label>Email</label>
+                            <input type="email" id="email" value="ahmad.razak@kolej.edu.my" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="save-btn">Save Changes</button>
+                    <p class="msg" id="msg">Profile updated successfully.</p>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById("profileForm").addEventListener("submit", function (e) {
+            e.preventDefault(); // stay on the page
+            document.getElementById("msg").style.display = "block";
+        });
+    </script>
+</body>
+</html>

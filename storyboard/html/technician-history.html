@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Aduan Kolej | Completed Jobs</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { background: #f4f6f9; color: #263445; }
+
+        /* ===== SIDEBAR ===== */
+        .sidebar {
+            width: 240px;
+            height: 100vh;
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 25px 15px;
+            border-right: 1px solid rgba(255, 255, 255, 0.25);
+            background:
+                linear-gradient(180deg,
+                    rgba(214, 80, 160, 0.55) 0%,
+                    rgba(90, 100, 230, 0.45) 30%,
+                    rgba(5, 5, 8, 0) 65%),
+                #07070d;
+        }
+        .logo { font-size: 21px; font-weight: bold; letter-spacing: 1px; margin-bottom: 8px; }
+        .subtitle { font-size: 12px; color: rgba(255, 255, 255, 0.8); margin-bottom: 35px; }
+        .sidebar a {
+            display: block;
+            padding: 14px;
+            margin-bottom: 8px;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+            border: 1px solid transparent;
+            transition: 0.25s ease;
+        }
+        .sidebar a:hover { background: rgba(255, 255, 255, 0.12); }
+        .sidebar a.active {
+            background: linear-gradient(90deg, rgba(214, 80, 160, 0.6), rgba(90, 100, 230, 0.6));
+            border-color: rgba(255, 255, 255, 0.3);
+            font-weight: 600;
+        }
+        /* ===== END SIDEBAR ===== */
+
+        .main { margin-left: 240px; padding: 30px; }
+        .topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+        .topbar h1 { font-size: 26px; }
+        .topbar p { color: #718096; font-size: 14px; margin-top: 4px; }
+        .box { background: white; padding: 22px; border-radius: 10px; box-shadow: 0 2px 8px #0000000d; }
+        @media (max-width: 800px) { .main { margin-left: 0; } }
+
+        .search { padding: 9px 12px; width: 280px; max-width: 100%; border: 1px solid #bbb; border-radius: 4px; font-size: 13px; margin-bottom: 15px; }
+        .table-wrap { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 14px 12px; text-align: left; border-bottom: 1px solid #edf0f4; font-size: 13px; }
+        th { background: #f7f9fc; color: #526174; }
+        .status { padding: 6px 10px; border-radius: 20px; font-size: 12px; font-weight: bold; display: inline-block; background: #d1fae5; color: #047857; }
+        .count { color: #526174; font-size: 13px; margin-top: 12px; }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">E-Aduan Kolej</div>
+        <div class="subtitle">Technician Panel</div>
+        <nav>
+            <a href="technician.html">Assigned Complaints</a>
+            <a href="technician-history.html" class="active">Completed Jobs</a>
+            <a href="technician-profile.html">Profile</a>
+            <a href="index.html">Logout</a>
+        </nav>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <div>
+                <h1>Completed Jobs</h1>
+                <p>All complaints you have finished fixing.</p>
+            </div>
+            <div style="font-weight: bold;">TECHNICIAN AHMAD</div>
+        </header>
+
+        <section class="box">
+            <input type="text" id="search" class="search" placeholder="Search by ID, category, location...">
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Complaint ID</th>
+                            <th>Category</th>
+                            <th>Location</th>
+                            <th>Reported By</th>
+                            <th>Date Completed</th>
+                            <th>Work Done</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="jobs">
+                        <tr>
+                            <td>#AD-088</td><td>Wi-Fi / Internet</td><td>Level 3 Study Area</td>
+                            <td>Haziq Danial</td><td>20 Sep 2026</td><td>Router replaced</td>
+                            <td><span class="status">Resolved</span></td>
+                        </tr>
+                        <tr>
+                            <td>#AD-079</td><td>Furniture / Broken Chair</td><td>Block C, Room 210</td>
+                            <td>Siti Mariam</td><td>14 Sep 2026</td><td>Chair replaced</td>
+                            <td><span class="status">Resolved</span></td>
+                        </tr>
+                        <tr>
+                            <td>#AD-072</td><td>Electrical / Lighting</td><td>Block A, Corridor</td>
+                            <td>Farhan Aiman</td><td>08 Sep 2026</td><td>Bulb and wiring fixed</td>
+                            <td><span class="status">Resolved</span></td>
+                        </tr>
+                        <tr>
+                            <td>#AD-065</td><td>Plumbing / Blocked Sink</td><td>Block B, Pantry</td>
+                            <td>Irfan Hakim</td><td>01 Sep 2026</td><td>Pipe cleared</td>
+                            <td><span class="status">Resolved</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="count" id="count"></p>
+        </section>
+    </main>
+
+    <script>
+        const rows = document.querySelectorAll("#jobs tr");
+        const count = document.getElementById("count");
+
+        function showCount() {
+            const visible = Array.from(rows).filter(r => r.style.display !== "none").length;
+            count.textContent = "Showing " + visible + " of " + rows.length + " completed jobs";
+        }
+
+        document.getElementById("search").addEventListener("input", function () {
+            const q = this.value.toLowerCase();
+            rows.forEach(function (row) {
+                row.style.display = row.textContent.toLowerCase().includes(q) ? "" : "none";
+            });
+            showCount();
+        });
+
+        showCount();
+    </script>
+</body>
+</html>
