@@ -43,11 +43,9 @@ A role-based web application designed for managing hostel maintenance and facili
 ## Project Structure
 
 ```text
-e-aduan-kolej/
-├── src/
-│   ├── student/
-│   ├── technician/
-│   └── admin/
+e-aduan-kolej
+├── ERD/
+├── storyboard/
 └── README.md
 ```
 
