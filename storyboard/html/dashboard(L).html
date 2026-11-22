@@ -1,1 +1,251 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Admin Dashboard | E-Aduan Kolej</title><link rel="stylesheet" href="style.css"></head><body><div class="shell"><aside class="sidebar"><div class="brand">E-Aduan Kolej</div><p class="sub">College Complaint Management System</p><nav class="nav"><a class="active" href="dashboard.html">Dashboard</a><a class="" href="calendar.html">Complaint Calendar</a><a class="" href="complaints.html">Manage Complaints</a></nav></aside><main class="content"><header class="top"><div><h1>Admin Dashboard</h1><div class="muted">Administrator portal · Complaint management</div></div><div class="user-pill">Administrator</div></header><section class="stats"><div class="card stat"><p>Total complaints</p><strong>128</strong><div class="muted">All submissions</div></div><div class="card stat pending"><p>Pending</p><strong>24</strong><div class="muted">Awaiting action</div></div><div class="card stat progress"><p>In progress</p><strong>38</strong><div class="muted">Being handled</div></div><div class="card stat resolved"><p>Resolved</p><strong>66</strong><div class="muted">Completed</div></div></section><div class="section"><h2>Complaint calendar · October 2026</h2><a class="btn" href="calendar.html">Open full calendar</a></div><div class="panel"><div class="calendar-scroll"><div class="calendar"><div class="dayname">MON</div><div class="dayname">TUE</div><div class="dayname">WED</div><div class="dayname">THU</div><div class="dayname">FRI</div><div class="dayname">SAT</div><div class="dayname">SUN</div><div class="day emptyday"></div><div class="day emptyday"></div><div class="day emptyday"></div><div class="day"><div class="date">1</div></div><div class="day"><div class="date">2</div><span class="event pending">AD-104 · Water leak</span></div><div class="day"><div class="date">3</div></div><div class="day"><div class="date">4</div></div><div class="day"><div class="date">5</div><span class="event progress">AD-106 · Wi-Fi</span></div><div class="day"><div class="date">6</div></div><div class="day"><div class="date">7</div></div><div class="day"><div class="date">8</div><span class="event resolved">AD-109 · Lighting</span></div><div class="day"><div class="date">9</div></div><div class="day"><div class="date">10</div></div><div class="day"><div class="date">11</div></div><div class="day"><div class="date">12</div><span class="event pending">AD-113 · Cleanliness</span></div><div class="day"><div class="date">13</div></div><div class="day"><div class="date">14</div><span class="event progress">AD-116 · Furniture</span></div><div class="day"><div class="date">15</div></div><div class="day"><div class="date">16</div></div><div class="day"><div class="date">17</div></div><div class="day"><div class="date">18</div></div><div class="day"><div class="date">19</div><span class="event resolved">AD-121 · Plumbing</span></div><div class="day"><div class="date">20</div></div><div class="day"><div class="date">21</div></div><div class="day"><div class="date">22</div><span class="event rejected">AD-124 · Electrical</span></div><div class="day"><div class="date">23</div></div><div class="day"><div class="date">24</div></div><div class="day"><div class="date">25</div></div><div class="day"><div class="date">26</div></div><div class="day"><div class="date">27</div><span class="event progress">AD-129 · Water leak</span></div><div class="day"><div class="date">28</div></div><div class="day"><div class="date">29</div></div><div class="day"><div class="date">30</div></div><div class="day"><div class="date">31</div></div><div class="day emptyday"></div></div></div><div class="legend"><span><i class="dot" style="background:#e3a323"></i>Pending</span><span><i class="dot" style="background:#3182ce"></i>In progress</span><span><i class="dot" style="background:#2f9e72"></i>Resolved</span><span><i class="dot" style="background:#b42318"></i>Rejected</span></div></div><div class="section"><h2>Recent complaints</h2><a class="link" href="complaints.html">View all complaints →</a></div><div class="panel table-wrap"><table class="table"><thead><tr><th>ID</th><th>Complaint</th><th>Location</th><th>Date</th><th>Status</th></tr></thead><tbody><tr><td>AD-129</td><td>Water leakage near bathroom</td><td>Block C</td><td>27 Oct 2026</td><td><span class="status progress">In progress</span></td></tr><tr><td>AD-124</td><td>Electrical socket damaged</td><td>Block A</td><td>22 Oct 2026</td><td><span class="status rejected">Rejected</span></td></tr><tr><td>AD-121</td><td>Bathroom plumbing issue</td><td>Block B</td><td>19 Oct 2026</td><td><span class="status resolved">Resolved</span></td></tr></tbody></table></div><div class="footer">E-Aduan Kolej · Static HTML/CSS prototype</div></main></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | E-Aduan Kolej</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* extra styles for the working dashboard */
+        html { scroll-behavior: smooth; }
+        .toolbar { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+        .toolbar input, .toolbar select, .row-select {
+            padding: 8px; border: 1px solid #bbb; border-radius: 3px; font: inherit; font-size: 13px; background: white;
+        }
+        .toolbar input { flex: 1; min-width: 200px; }
+        .scroll-y { max-height: 380px; overflow-y: auto; }
+        .table thead th { position: sticky; top: 0; }
+        .event { cursor: pointer; }
+        .cal-nav { display: flex; gap: 8px; align-items: center; }
+        .empty-row { text-align: center; color: #777; }
+    </style>
+</head>
+<body>
+<div class="shell">
+
+    <aside class="sidebar">
+        <div class="brand">E-Aduan Kolej</div>
+        <p class="sub">College Complaint Management System</p>
+        <nav class="nav">
+            <a class="active" href="#top">Dashboard</a>
+            <a href="#calendar">Complaint Calendar</a>
+            <a href="#complaints">Manage Complaints</a>
+            <a href="index.html">Logout</a>
+        </nav>
+    </aside>
+
+    <main class="content" id="top">
+        <header class="top">
+            <div>
+                <h1>Admin Dashboard</h1>
+                <div class="muted">Administrator portal · Complaint management</div>
+            </div>
+            <div class="user-pill">Administrator</div>
+        </header>
+
+        <!-- Summary cards (calculated automatically from the complaint list) -->
+        <section class="stats">
+            <div class="card stat"><p>Total complaints</p><strong id="statTotal">0</strong><div class="muted">All submissions</div></div>
+            <div class="card stat pending"><p>Pending</p><strong id="statPending">0</strong><div class="muted">Awaiting action</div></div>
+            <div class="card stat progress"><p>In progress</p><strong id="statProgress">0</strong><div class="muted">Being handled</div></div>
+            <div class="card stat resolved"><p>Resolved</p><strong id="statResolved">0</strong><div class="muted">Completed</div></div>
+            <div class="card stat rejected"><p>Rejected</p><strong id="statRejected">0</strong><div class="muted">Not approved</div></div>
+        </section>
+
+        <!-- Manage complaints -->
+        <div class="section" id="complaints">
+            <h2>Manage complaints</h2>
+        </div>
+        <div class="panel">
+            <div class="toolbar">
+                <input type="text" id="search" placeholder="Search by ID, complaint or location...">
+                <select id="filter">
+                    <option value="all">All statuses</option>
+                    <option value="pending">Pending</option>
+                    <option value="progress">In progress</option>
+                    <option value="resolved">Resolved</option>
+                    <option value="rejected">Rejected</option>
+                </select>
+            </div>
+            <div class="table-wrap scroll-y">
+                <table class="table">
+                    <thead>
+                        <tr><th>ID</th><th>Complaint</th><th>Location</th><th>Date</th><th>Status</th><th>Change status</th></tr>
+                    </thead>
+                    <tbody id="tableBody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Complaint calendar -->
+        <div class="section" id="calendar">
+            <h2 id="calTitle">Complaint calendar</h2>
+            <div class="cal-nav">
+                <button class="btn light" id="prevMonth">← Prev</button>
+                <button class="btn light" id="todayMonth">Today</button>
+                <button class="btn light" id="nextMonth">Next →</button>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="calendar-scroll">
+                <div class="calendar" id="calendarGrid"></div>
+            </div>
+            <div class="legend">
+                <span><i class="dot" style="background:#e3a323"></i>Pending</span>
+                <span><i class="dot" style="background:#3182ce"></i>In progress</span>
+                <span><i class="dot" style="background:#2f9e72"></i>Resolved</span>
+                <span><i class="dot" style="background:#b42318"></i>Rejected</span>
+            </div>
+            <p class="muted" style="font-size:12px; margin-top:10px;">Tip: click a complaint in the calendar to find it in the table above.</p>
+        </div>
+
+        <div class="footer">E-Aduan Kolej · Static HTML/CSS prototype</div>
+    </main>
+
+</div>
+
+<script>
+    // ===== Sample complaint data (add or edit complaints here) =====
+    const complaints = [
+        { id: "AD-129", title: "Water leakage near bathroom", short: "Water leak",  location: "Block C", date: "2026-10-19", status: "progress" },
+        { id: "AD-124", title: "Electrical socket damaged",   short: "Electrical",  location: "Block A", date: "2026-10-16", status: "rejected" },
+        { id: "AD-121", title: "Bathroom plumbing issue",     short: "Plumbing",    location: "Block B", date: "2026-10-15", status: "resolved" },
+        { id: "AD-116", title: "Broken study table",          short: "Furniture",   location: "Block B", date: "2026-10-14", status: "progress" },
+        { id: "AD-113", title: "Dirty common area",           short: "Cleanliness", location: "Block C", date: "2026-10-12", status: "pending"  },
+        { id: "AD-109", title: "Corridor light not working",  short: "Lighting",    location: "Block A", date: "2026-10-08", status: "resolved" },
+        { id: "AD-106", title: "Wi-Fi keeps disconnecting",   short: "Wi-Fi",       location: "Block B", date: "2026-10-05", status: "progress" },
+        { id: "AD-104", title: "Water leak in room ceiling",  short: "Water leak",  location: "Block A", date: "2026-10-02", status: "pending"  },
+        { id: "AD-099", title: "Air-cond not cooling",        short: "Air-cond",    location: "Block B", date: "2026-09-30", status: "pending"  },
+        { id: "AD-095", title: "Broken chair in lounge",      short: "Furniture",   location: "Block C", date: "2026-09-28", status: "resolved" },
+        { id: "AD-088", title: "No internet at study area",   short: "Wi-Fi",       location: "Level 3", date: "2026-09-20", status: "resolved" }
+    ];
+
+    const statusLabel = { pending: "Pending", progress: "In progress", resolved: "Resolved", rejected: "Rejected" };
+    const monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+    // The calendar starts at October 2026 (month 9, because months start at 0)
+    const START_YEAR = 2026, START_MONTH = 9;
+    let viewYear = START_YEAR, viewMonth = START_MONTH;
+
+    const searchBox = document.getElementById("search");
+    const filterBox = document.getElementById("filter");
+    const tableBody = document.getElementById("tableBody");
+
+    function formatDate(iso) {
+        const p = iso.split("-");
+        return p[2] + " " + monthNames[p[1] - 1].slice(0, 3) + " " + p[0];
+    }
+
+    // ----- Summary cards -----
+    function renderStats() {
+        const count = s => complaints.filter(c => c.status === s).length;
+        document.getElementById("statTotal").textContent = complaints.length;
+        document.getElementById("statPending").textContent = count("pending");
+        document.getElementById("statProgress").textContent = count("progress");
+        document.getElementById("statResolved").textContent = count("resolved");
+        document.getElementById("statRejected").textContent = count("rejected");
+    }
+
+    // ----- Complaints table -----
+    function renderTable() {
+        const q = searchBox.value.trim().toLowerCase();
+        const f = filterBox.value;
+
+        const list = complaints
+            .filter(c => f === "all" || c.status === f)
+            .filter(c => (c.id + " " + c.title + " " + c.location).toLowerCase().includes(q))
+            .sort((a, b) => b.date.localeCompare(a.date));
+
+        if (list.length === 0) {
+            tableBody.innerHTML = '<tr><td colspan="6" class="empty-row">No complaints found.</td></tr>';
+            return;
+        }
+
+        tableBody.innerHTML = list.map(c => {
+            const options = Object.keys(statusLabel).map(s =>
+                '<option value="' + s + '"' + (s === c.status ? " selected" : "") + ">" + statusLabel[s] + "</option>"
+            ).join("");
+            return "<tr>" +
+                "<td>" + c.id + "</td>" +
+                "<td>" + c.title + "</td>" +
+                "<td>" + c.location + "</td>" +
+                "<td>" + formatDate(c.date) + "</td>" +
+                '<td><span class="status ' + c.status + '">' + statusLabel[c.status] + "</span></td>" +
+                '<td><select class="row-select" data-id="' + c.id + '">' + options + "</select></td>" +
+                "</tr>";
+        }).join("");
+    }
+
+    // ----- Calendar -----
+    function renderCalendar() {
+        document.getElementById("calTitle").textContent = "Complaint calendar · " + monthNames[viewMonth] + " " + viewYear;
+
+        const firstDay = (new Date(viewYear, viewMonth, 1).getDay() + 6) % 7; // Monday = 0
+        const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
+
+        let html = ["MON","TUE","WED","THU","FRI","SAT","SUN"].map(d => '<div class="dayname">' + d + "</div>").join("");
+
+        for (let i = 0; i < firstDay; i++) html += '<div class="day emptyday"></div>';
+
+        for (let d = 1; d <= daysInMonth; d++) {
+            const iso = viewYear + "-" + String(viewMonth + 1).padStart(2, "0") + "-" + String(d).padStart(2, "0");
+            const events = complaints.filter(c => c.date === iso).map(c =>
+                '<span class="event ' + c.status + '" data-id="' + c.id + '">' + c.id + " · " + c.short + "</span>"
+            ).join("");
+            html += '<div class="day"><div class="date">' + d + "</div>" + events + "</div>";
+        }
+
+        const filled = firstDay + daysInMonth;
+        const trailing = (7 - (filled % 7)) % 7;
+        for (let i = 0; i < trailing; i++) html += '<div class="day emptyday"></div>';
+
+        document.getElementById("calendarGrid").innerHTML = html;
+    }
+
+    function renderAll() {
+        renderStats();
+        renderTable();
+        renderCalendar();
+    }
+
+    // ----- Events -----
+    // change a complaint's status from the table
+    tableBody.addEventListener("change", function (e) {
+        if (!e.target.matches("select[data-id]")) return;
+        const c = complaints.find(x => x.id === e.target.dataset.id);
+        c.status = e.target.value;
+        renderAll();
+    });
+
+    searchBox.addEventListener("input", renderTable);
+    filterBox.addEventListener("change", renderTable);
+
+    // click a calendar complaint -> search for it in the table
+    document.getElementById("calendarGrid").addEventListener("click", function (e) {
+        if (!e.target.matches(".event")) return;
+        searchBox.value = e.target.dataset.id;
+        filterBox.value = "all";
+        renderTable();
+        document.getElementById("complaints").scrollIntoView();
+    });
+
+    // month buttons
+    document.getElementById("prevMonth").addEventListener("click", function () {
+        viewMonth--;
+        if (viewMonth < 0) { viewMonth = 11; viewYear--; }
+        renderCalendar();
+    });
+    document.getElementById("nextMonth").addEventListener("click", function () {
+        viewMonth++;
+        if (viewMonth > 11) { viewMonth = 0; viewYear++; }
+        renderCalendar();
+    });
+    document.getElementById("todayMonth").addEventListener("click", function () {
+        viewYear = START_YEAR; viewMonth = START_MONTH;
+        renderCalendar();
+    });
+
+    renderAll();
+</script>
+</body>
+</html>
